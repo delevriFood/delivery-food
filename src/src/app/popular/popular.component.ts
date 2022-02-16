@@ -18,14 +18,8 @@ constructor(
 export class PopularComponent implements OnInit {
   foods!: Foods[] ;
     constructor () { 
-  //     this.menu()
+ 
     }
-  // async menu(){
-  //  await axios.get("http://localhost:5000/admin/food",).then((response) => {
-  //    this.data = response.data
-  //    console.log(this.data)
-  //   })
-  // }
 
   async ngOnInit(): Promise<void> {
     await axios.get("http://localhost:5000/admin/getMenuOneRestaurant").then((response) => {
