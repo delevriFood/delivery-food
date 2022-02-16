@@ -17,12 +17,10 @@ import { ReviewComponent } from './review/review.component';
 import { OrderComponent } from './order/order.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DonatiosComponent } from './donatios/donatios.component';
-
 const routes: Routes = [
   {path: 'Login', component :LoginComponent},
   {path:'App' , component :AppComponent } ,
   {path:'Singnup' , component :SingnupComponent},
-  
   {path: 'Home', component :HomeComponent},
   {path: 'Admin', component :AdminComponent},
   {path: 'Specialty', component :SpecialtyComponent},

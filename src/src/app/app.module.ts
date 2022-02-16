@@ -28,11 +28,13 @@ import { DonatiosComponent } from './donatios/donatios.component';
     ReviewComponent,
     OrderComponent,
     AboutUsComponent,
-    DonatiosComponent
+    DonatiosComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule , 
+
+      
   ],
   providers: [],
   bootstrap: [AppComponent]
