@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import axios from "axios"
 import { Router } from '@angular/router';
 import { DeviceDetectorService } from "ngx-device-detector";
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  {
-  
   email:String = ''; 
     password = "" ;
     ip=0 ; 
@@ -36,7 +34,6 @@ export class LoginComponent  {
   
   async GetDataFromDataBase(event:any){
     event.preventDefault()
-
       var data ={
         loginEmail: this.email  ,
         loginPaswword :this.password  , 
@@ -47,29 +44,21 @@ var res = ""
    await axios.post("http://localhost:5000/user/loginUser" , {loginEmail: this.email  ,
    loginPaswword :this.password  , 
    ip : this.ip.toString(), 
-   device  : this.DeviceInfo , 
+   device  : this.DeviceInfo 
 } ).then(data=>{
-  
   res =data.data
 alert(res)   
-}
-   )
-   
-   if(res=="Account Not Found" ||res =="incorrect"){
-
-
+}).catch(err=> console.log(err))
+  if(res=="Account Not Found" ||res =="incorrect"){
     this.router.navigate(['/Login']);
-
   }
   else 
   if(res=="2facter"){
-    event.preventDefault()
-
   this.router.navigate(["/Veifiy"])
   }
   else 
   { 
-
+alert("True")
 this.router.navigate([`/Home`])
 
   }

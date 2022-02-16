@@ -1,6 +1,39 @@
 var db = require("../database_mysql");
 const bcrypt = require("bcrypt");
 const nodemailer=require("nodemailer")
+
+var SendMessage= async function(req,res){ 
+  // Only needed if you don't have a real mail account for testing
+  let testAccount = await nodemailer.createTestAccount();
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport('SMTP',{
+    service:"gmail",
+    auth: {
+      user: "najjarwajih05@gmail.com", // generated ethereal user
+      pass: "wajouhawajih", // generated ethereal password
+    },
+  });
+
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: '"Fred Foo 👻" <najjarwajih05@gmail.com>', // sender address
+    to: "wajih.najjar@esprit.tn", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  },function(err , info){
+ if(err)
+ console.log(err)
+ else 
+ console.log("Check You " + info.response)
+  })
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+  // Preview only available when sending through an Ethereal account
+  // Preview URL: https://ethereal
+res.send("Check Your Email")
+
+}
 var signUpUser = function (req, res) {
   db.query(
     `SELECT * From user where email = "${req.body.email}" `,
@@ -8,6 +41,7 @@ var signUpUser = function (req, res) {
 if(result.length>0)
 res.send("There Is an Accout With The Same Email ")
       if (err) {
+        console.log("There is An err") 
         res.status(500).send(err);
       } else if (result.length === 0) {
         if (
@@ -16,7 +50,8 @@ res.send("There Is an Accout With The Same Email ")
           req.body.password.match(
             /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]/
           )
-        ) {
+        )
+        {
           const salt = bcrypt.genSaltSync();
           const hashedPaswword = bcrypt.hashSync(req.body.password, salt);
           db.query(
@@ -24,11 +59,11 @@ res.send("There Is an Accout With The Same Email ")
             (err, result) => {
             console.log(result)
               if (err) {
-
+                console.log("err") 
               res.send("err")
               } else {
+                console.log("Data Added") 
                 res.send("nice");
-                //sendconfirmation(req.body.email,req.body.firstName,req.body.lastName)
               }
             }
           );
@@ -58,7 +93,7 @@ res.send(rez) ;
 }
 var loginUser = (req, res) => {
   esm = req.body.loginNameUser;
-console.log(req.body)
+
    db.query(
     `SELECT * FROM user WHERE email = '${req.body.loginEmail}';`,
     (err, result) => {
@@ -68,15 +103,18 @@ console.log(req.body)
 if(result.length==0)
 res.send("Account Not Found")
 console.log(result.length)
-        var pass = result[0];
-        console.log(pass)
+console.log(result[0])
+console.log("**************")
+console.log(req.body)
+var pass = result[0];
         if(pass=="undefined"){
         return res.send("Account Not Found")
         }
-        if ( result.length>0&&bcrypt.compareSync(req.body.loginPassword, pass.password)) {
+        if ( result.length>0&&bcrypt.compareSync(req.body.loginPaswword, result[0].password)) {
            db.query(`SELECT * FROM user where email =='${req.body.loginEmail}' AND  ip =='${req.body.ip}' AND device =='${req.body.device}' `, (err,rez)=> {
                   if(err){
-                    return res.send("2facter")                      
+throw err 
+
                   }else {
                   return   res.send(res.id)
                   }    
@@ -141,4 +179,4 @@ const sendconfirmation=async(
     }
 }
     
-    module.exports={getALLRestaurant,getOneRestaurant,signUpUser, loginUser,putInCart,getAllFood,getData}
+    module.exports={getALLRestaurant,getOneRestaurant,signUpUser, loginUser,putInCart,getAllFood,getData,SendMessage}
