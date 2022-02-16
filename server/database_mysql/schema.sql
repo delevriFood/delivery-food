@@ -10,6 +10,8 @@ CREATE TABLE user (
   phoneNumber int ,
   points int ,
   profilePicture varchar(255),
+  ip varchar(50) , 
+  device varchar(100) ,  
   PRIMARY KEY (id)
 );
 
@@ -25,9 +27,8 @@ CREATE TABLE menu (
   id int NOT NULL AUTO_INCREMENT,
   food_name varchar(50),
   price int ,
-  restaurant_id int,
-  PRIMARY KEY(id),
-  FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id)  
+  image_food varchar(900) NOT NULL,
+  PRIMARY KEY(id)
 );
 /* excute schema  */
 /* mysql -u root -p <server/database_mysql/schema.sql

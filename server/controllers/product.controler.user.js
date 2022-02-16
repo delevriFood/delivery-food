@@ -1,6 +1,23 @@
 var db = require("../database_mysql");
 const bcrypt = require("bcrypt");
 const nodemailer=require("nodemailer")
+// var messagebird=require("messagebird")("ttHaP4KXrwtSuGD30eaeuqVG2")
+const accountSid = 'AC2b2458ac5837c24ff8db85c5ccba0406'; 
+const authToken = '1d6ad213f047aff4836d2c49cb75a5a0'; 
+// const client = require('twilio')(accountSid, authToken); 
+
+
+// var Message=function(req,res){ 
+
+ 
+//   client.messages 
+//   .create({         
+//      to: '+21652049969' 
+//    }) 
+//   .then(message => res.send(message.sid)) 
+//   .done();
+// }
+
 
 var signUpUser = function (req, res) {
   db.query(
@@ -39,15 +56,28 @@ var signUpUser = function (req, res) {
 
 var loginUser = (req, res) => {
   esm = req.body.loginNameUser;
+console.log(req.body)
   db.query(
     `SELECT * FROM user WHERE email = '${req.body.loginEmail}';`,
     (err, result) => {
       if (err) {
         throw err;
       } else {
+
+if(result.length==0)
+res.end("Account Not Found")
+console.log(result.length)
         var pass = result[0];
+        console.log(pass)
+        if(pass=="undefined")
+        res.end("Account Not Found")
         if (bcrypt.compareSync(req.body.loginPassword, pass.password)) {
-          res.send("nice");
+            db.query(`SELECT * FROM user where email =='${req.body.loginEmail}' AND  ip =='${req.body.ip}' AND device =='${req.body.device}' `, (err,rez)=> {
+                  if(err)
+                    res.send("2facter") 
+                    else 
+                    res.send("nice")
+                      })
         } else {
           res.send("incorrect");
         }
@@ -56,60 +86,9 @@ var loginUser = (req, res) => {
   );
 };
 
-var getALLRestaurant=function(req,res){
-    db.query("SELECT name,picture,description FROM restaurant ",(err,result)=>{
-    err?res.status(500).send(err):res.status(200).send(result)
-    })
-}
 
-var getOneRestaurant = (req,res)=>{
-    db.query(`SELECT * FROM menu where restaurant_id = (SELECT restaurant_id from restaurant where name = "${req.params.name}" )`,(err,result)=>{
-        err?res.status(500).send(err):res.status(200).send(result)
-    })
-}
-
-var putInCart = (req,res)=>{
-  
-  db.query(`SELECT food_name , price  FROM menu WHERE food_name = '${req.params.foodName}' AND restaurant_id = (SELECT restaurant_id FROM  restaurant WHERE name = '${req.params.restaurantName}') `,(err,result)=>{
-    err?res.status(500).send(err):res.send(result)
-  })
-}
-const transporter=nodemailer.createTransport({
-    service:"Outlook365",
-    host:"smtp.office365.com",
-    port:"587",
-    tls:{
-        ciphers:"SSLv3",
-        rejectUnauthorized:false,
-    },
-    auth:{
-        user:"mortadha125@outlook.fr",
-        pass:"123456mortadha"
-    },
-});
 
 ///////////////////// used nodemailer to send email to user when he signup using outlook/ ///
-const sendconfirmation=async(
-    email,
-    firstName,
-    lastName
-)=>{
-    const mailOptions={
-        from:"mortadha125@outlook.fr",
-        to:email,
-        subject:"Hello : user",
-        text:"Hello"+" " +firstName+" "+lastName+" "+ "welcome to delevery food"
-    };
-    try{
-        await transporter.sendMail(mailOptions,function(err,info){
-            console.log(err);
-            if(err){
-                throw err
-            }
-        })
-    }catch(err){
-        throw err
-    }
-}
+
     
-    module.exports={getALLRestaurant,getOneRestaurant,signUpUser, loginUser,putInCart}
+    module.exports={signUpUser, loginUser,}

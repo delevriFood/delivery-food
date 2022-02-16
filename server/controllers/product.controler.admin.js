@@ -57,13 +57,31 @@ var login =(req,res)=>{
 // })
 // }
 ////////////////// menu  for
-var addMenu=(req,res)=>{
-    var params=[req.body.food,req.body.price]
-    str=`insert into menu (food_name,price,restaurant_id) VALUES (?,?,(SELECT  restaurant_id from restaurant where name="${esm}"))`
-    db.query(str,params,(err,result)=>{
-        err?console.log(err):res.status(200).send("menu rtzad")
+var foodMenu = function(req, res){
+    var menufood = "INSERT INTO menu SET ?"
+    var params = {
+      food_name: req.body.food_name,
+      price: req.body.price,
+      image_food: req.body.image_food,
+    }
+    db.query(menufood, params,(res,err,)=>{
+      if(err){
+        console.log(err)
+      }else{
+        res.send(res)
+      }
     })
-}
+  }
+  var food = function(req,res){
+       
+      db.query("SELECT * FROM menu", (err, items, fields) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.status(200).send(items);
+        }
+      });
+    };
  ////////// get all menu for on restaurant //:
 var getMenuOneRestaurant=(req,res)=>{
      var str=`select * from menu where restaurant_id =(select restaurant_id from restaurant where name = "${esm}")`
@@ -72,4 +90,4 @@ var getMenuOneRestaurant=(req,res)=>{
      })
  }
 
-module.exports={getALL,signUp,login,addMenu,getMenuOneRestaurant}
+module.exports={getALL,signUp,login,foodMenu,getMenuOneRestaurant,food}
