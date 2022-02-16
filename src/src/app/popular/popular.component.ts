@@ -28,7 +28,7 @@ export class PopularComponent implements OnInit {
   // }
 
   async ngOnInit(): Promise<void> {
-    await axios.get("http://localhost:5000/admin/food",).then((response) => {
+    await axios.get("http://localhost:5000/admin/getMenuOneRestaurant",).then((response) => {
       this.foods = response.data
       console.log(this.foods)
     })

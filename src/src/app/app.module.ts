@@ -34,7 +34,9 @@ import { PromoComponent } from './promo/promo.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule , 
+
+      
   ],
   providers: [],
   bootstrap: [AppComponent]

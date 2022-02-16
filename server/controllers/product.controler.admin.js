@@ -57,7 +57,7 @@ var login =(req,res)=>{
 // })
 // }
 ////////////////// menu  for
-var foodMenu = function(req, res){
+var addMenu=function(req, res){
     var menufood = "INSERT INTO menu SET ?"
     var params = {
       food_name: req.body.food_name,
@@ -68,26 +68,16 @@ var foodMenu = function(req, res){
       if(err){
         console.log(err)
       }else{
-        res.send(res)
+        console.log(res)
       }
     })
-  }
-  var food = function(req,res){
-       
-      db.query("SELECT * FROM menu", (err, items, fields) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          res.status(200).send(items);
-        }
-      });
-    };
+}
  ////////// get all menu for on restaurant //:
 var getMenuOneRestaurant=(req,res)=>{
-     var str=`select * from menu where restaurant_id =(select restaurant_id from restaurant where name = "${esm}")`
+     var str=`select * from menu`
      db.query(str,(err,result)=>{
          err?console.log(err):res.send(result)
      })
  }
 
-module.exports={getALL,signUp,login,foodMenu,getMenuOneRestaurant,food}
+module.exports={getALL,signUp,login,addMenu,getMenuOneRestaurant}

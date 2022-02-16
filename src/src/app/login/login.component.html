@@ -1,1 +1,32 @@
 <p>login works!</p>
+<div class="login_container">
+  <div class="login_form_container">
+    <div class="left">
+      <form class="form_container">
+        <h1>Login to Your Account</h1>
+
+        <input type="email" placeholder="Email" name="email" class="input" (change)="GetDataEmail($event)" />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          class="input"
+        (change)="GetDataPassword($event)" />
+        <div class="error_msg">error</div>
+        <a routerLink="/Singnup" routerLinkActive="router-link-active"
+          >Register</a
+        >
+
+        <button type="submit" className="green_btn" (click)="GetDataFromDataBase($event)">Sing In</button>
+      </form>
+    </div>
+    <div class="right">
+      <h1>New Here ?</h1>
+
+      <button type="button" class="white_btn">
+        <a routerLink="/Singnup" routerLinkActive="router-link-active">
+          Sing In</a>
+      </button>
+    </div>
+  </div>
+</div>

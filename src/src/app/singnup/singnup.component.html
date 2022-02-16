@@ -1,1 +1,49 @@
-<p>singnup works!</p>
+<div class="signup_container">
+
+  <div class="signup_form_container">
+    <div class="left">
+      <h1>Welcome Back</h1>
+
+      <button type="button" class="white_btn">
+        <a routerLink="/Login" routerLinkActive="router-link-active">Login</a>
+      </button>
+    </div>
+    <div class="right">
+      <form class="form_container">
+        <h1>Create Account</h1>
+        <input
+          type="text"
+          placeholder="First Name"
+          name="firstName"
+          class="input"
+          (change)="getFirstName($event)"
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          name="lastName"
+          class="input"
+          (change)="getLastName($event)"
+        />
+        <input type="email" placeholder="Email" name="email" class="input"  (change)="GetEmail($event)"/>
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          class="input"
+          (change)="Getpassword($event)"
+        />
+
+        <input
+        type="text"
+        placeholder="Phone"
+        name="Phone"
+        class="input"
+        (change)="Getphone($event)"
+      />
+
+        <button type="submit" class="green_btn" (click)= "SendData()">Sing Up</button>
+      </form>
+    </div>
+  </div>
+</div>
