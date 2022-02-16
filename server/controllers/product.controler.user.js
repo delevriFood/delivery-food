@@ -2,11 +2,11 @@ var db = require("../database_mysql");
 const bcrypt = require("bcrypt");
 const nodemailer=require("nodemailer")
 var signUpUser = function (req, res) {
-  console.log(req.body)
   db.query(
     `SELECT * From user where email = "${req.body.email}" `,
     (err, result) => {
-      console.log(result)
+if(result.length>0)
+res.send("There Is an Accout With The Same Email ")
       if (err) {
         res.status(500).send(err);
       } else if (result.length === 0) {
@@ -21,9 +21,11 @@ var signUpUser = function (req, res) {
           const hashedPaswword = bcrypt.hashSync(req.body.password, salt);
           db.query(
             `INSERT INTO user (firstName,lastName ,email,password,phoneNumber,ip,device) Values ("${req.body.firstName}","${req.body.lastName}","${req.body.email}","${hashedPaswword}","${req.body.phone}", '${req.body.ip}' , '${req.body.device}')`,
-            (err1, result) => {
-              if (err1) {
-                throw err1;
+            (err, result) => {
+            console.log(result)
+              if (err) {
+
+              res.send("err")
               } else {
                 res.send("nice");
                 //sendconfirmation(req.body.email,req.body.firstName,req.body.lastName)
