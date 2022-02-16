@@ -56,8 +56,9 @@ alert(res)
    )
    
    if(res=="Account Not Found" ||res =="incorrect"){
-    alert("Hello")
-    this.router.navigate(['Login']);
+
+
+    this.router.navigate(['/Login']);
 
   }
   else 

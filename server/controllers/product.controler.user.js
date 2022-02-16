@@ -6,6 +6,7 @@ var signUpUser = function (req, res) {
   db.query(
     `SELECT * From user where email = "${req.body.email}" `,
     (err, result) => {
+      console.log(result)
       if (err) {
         res.status(500).send(err);
       } else if (result.length === 0) {
@@ -20,12 +21,12 @@ var signUpUser = function (req, res) {
           const hashedPaswword = bcrypt.hashSync(req.body.password, salt);
           db.query(
             `INSERT INTO user (firstName,lastName ,email,password,phoneNumber,ip,device) Values ("${req.body.firstName}","${req.body.lastName}","${req.body.email}","${hashedPaswword}","${req.body.phone}", '${req.body.ip}' , '${req.body.device}')`,
-            (err, result) => {
-              if (err) {
-                throw err;
+            (err1, result) => {
+              if (err1) {
+                throw err1;
               } else {
                 res.send("nice");
-                sendconfirmation(req.body.email,req.body.firstName,req.body.lastName)
+                //sendconfirmation(req.body.email,req.body.firstName,req.body.lastName)
               }
             }
           );

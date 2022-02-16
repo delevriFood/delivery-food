@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import axios from "axios"
+import axios from "axios" ;
 import { Router } from '@angular/router';
 import { DeviceDetectorService } from "ngx-device-detector";
 import * as $ from "jquery"
@@ -52,6 +52,7 @@ this.lastName=event.target.value
 }
 
 async SendData(){ 
+  alert("Hello")
 await axios.post("http://localhost:5000/user/signUpUser",{
 firstName : this.firstName , 
 lastName: this.lastName ,
@@ -59,12 +60,8 @@ email:  this.email ,
 password : this.password , 
 phone: this.phone , 
 ip : this.ip , 
-device : this.device 
-
-}).then(data=> {
-
-console.log(data)
-})
+device : this.device }).then(data=> {
+alert(data)})
 
 }
 
