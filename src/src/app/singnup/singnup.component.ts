@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import axios from "axios" ;
 import { Router } from '@angular/router';
 import { DeviceDetectorService } from "ngx-device-detector";
-import * as $ from "jquery"
+import * as $ from "jquery" ;
 @Component({
   selector: 'app-singnup',
   templateUrl: './singnup.component.html',
@@ -17,7 +17,9 @@ lastName=""  ;
 ip = "" 
 device = ""
 
-  constructor(private deviceService: DeviceDetectorService , private router:Router) { 
+  constructor(private deviceService: 
+    
+    DeviceDetectorService , private router:Router) { 
 this.GetIp()
 this.epicFunction()
 
