@@ -18,6 +18,8 @@ import { OrderComponent } from './order/order.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DonatiosComponent } from './donatios/donatios.component';
 import { VerifyComponent } from './verify/verify.component';
+import { PromoComponent } from './promo/promo.component';
+
 const routes: Routes = [
   {path: 'Login', component :LoginComponent},
   {path:'App' , component :AppComponent } ,
@@ -31,7 +33,8 @@ const routes: Routes = [
   {path: 'Order', component :OrderComponent},
   {path: 'AboutUs', component :AboutUsComponent},
   {path: 'Donatios', component :DonatiosComponent},
-  {path:"Verify" , component:VerifyComponent} 
+  {path:"Verify" , component:VerifyComponent} ,  
+  {path: 'Promo', component :PromoComponent}
 ];
 
 @NgModule({

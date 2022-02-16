@@ -15,6 +15,7 @@ import { OrderComponent } from './order/order.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DonatiosComponent } from './donatios/donatios.component';
 import { VerifyComponent } from './verify/verify.component';
+import { PromoComponent } from './promo/promo.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { VerifyComponent } from './verify/verify.component';
     AboutUsComponent,
     DonatiosComponent,
     VerifyComponent,
+    PromoComponent
   ],
   imports: [
     BrowserModule,
