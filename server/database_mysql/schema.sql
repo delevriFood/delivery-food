@@ -35,3 +35,9 @@ CREATE TABLE menu (
   Descr varchar(255),
   PRIMARY KEY (id_menu)
 );
+CREATE TABLE reviews (
+  id_person int NOT NULL AUTO_INCREMENT,
+id_feedback int Not NULL AUTO_INCREMENT,
+person_name varchar(50),
+feedback varchar(255),
+)

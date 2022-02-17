@@ -18,9 +18,9 @@
   min-width: 1em;
   font-weight:bold;
 }
-/* .logo{
+.logo{
   font-size: 3em ;
-} */
+}
 
 #ex3 .fa-stack[data-count]:after {
   position: absolute;
