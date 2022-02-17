@@ -1,0 +1,17 @@
+<section class="gallery" id="gallery">
+
+    <h1 class="heading"> our food <span> gallery </span> </h1>
+
+    <div class="box-container">
+
+        <div class="box" *ngFor ='let x of Data'>
+            <img src="{{x.img}}" alt="">
+            <div class="content">
+                <h3>{{x.name}}</h3>
+                <p>{{x.desc}}</p>
+                <a href="#" class="btn">ordern now</a>
+            </div>
+        </div>
+            </div>
+
+</section>
