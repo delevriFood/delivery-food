@@ -55,11 +55,14 @@ alert(res)
   }
   else 
   if(res=="2facter"){
+    event.preventDefault()
+   
   this.router.navigate(["/Veifiy"])
   }
   else 
   { 
 alert("True")
+   alert('Welcome')
 this.router.navigate([`/Home`])
 
   }

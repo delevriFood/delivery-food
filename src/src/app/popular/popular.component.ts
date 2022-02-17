@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ChangeDetectionStrategy ,ChangeDetectorRef} from '@angular/core';
 import {GlobalVars} from '../global-variable';
 import { CommonService } from '../CommonService';
-
+import { CommonServicea } from '../Commonservice1';
 
 export class Foods{
 constructor(
@@ -21,16 +21,13 @@ constructor(
   templateUrl: './popular.component.html',
   styleUrls: ['./popular.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class PopularComponent implements OnInit {
   foods!: Foods[] ;
-    constructor (private router:Router, private cd: ChangeDetectorRef , private Service: CommonService) { 
-         
-
+  ip = 0 
+  id = 0
+    constructor (private router:Router, private cd: ChangeDetectorRef , private Service: CommonService, private Service1: CommonService) { 
     }
-
-
     Data :any[]=[]
     //Change bestFood for html to Data 
    bestFood: any[] = [{
@@ -46,36 +43,32 @@ export class PopularComponent implements OnInit {
     alert(position.coords.latitude +
    " "+ position.coords.longitude);
    }
-   sendMessage(event : any): void {
-
+  async sendMessage(event : any): Promise<void>  {
       console.log(event.path[1].outerText)    
-
       var price = event.path[1].outerText.substr(0,3) 
        var name = event.path[1].outerText.substr(3,5)  
-      
-
-        
-                 
        alert(name)
-                alert(price)
+       alert(price)
 
-var data={
+ var data={
+   id : this.id , 
    counter : GlobalVars.counter , 
-   nameFood  : name , 
-   priceFood :price   
-}
-
-                 // send message to subscribers via observable subject
+   food  : name , 
+   priceFood :price  , 
+   ip :  (this.ip)
+}     // send message to subscribers via observable subject
     this.Service.sendUpdate(data);
+await axios.post('http://localhost:5000/user/postOrder' , {id:this.id , ip:this.ip , food : name}).then(data=> {
+console.log(data)
+alert("Check Your Data ")
 
+})
 }
-
 // addOne to the Cart 
    AddOne(event:any){ 
      GlobalVars.counter=GlobalVars.counter+1      
 // alert(GlobalVars.counter)
 this.sendMessage(event)
-
     }
    ngOnInit(){
    axios.get("http://localhost:5000/user/getAllFodd").then(data=>{
