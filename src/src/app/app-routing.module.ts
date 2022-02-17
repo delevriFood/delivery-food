@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-
-
-
-
 import { AppComponent } from './app.component';
 import { SingnupComponent } from './singnup/singnup.component';
 import { LoginComponent } from './login/login.component';
@@ -17,6 +12,7 @@ import { ReviewComponent } from './review/review.component';
 import { OrderComponent } from './order/order.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DonatiosComponent } from './donatios/donatios.component';
+import { VerifyComponent } from './verify/verify.component';
 import { PromoComponent } from './promo/promo.component';
 
 const routes: Routes = [
@@ -32,9 +28,9 @@ const routes: Routes = [
   {path: 'Order', component :OrderComponent},
   {path: 'AboutUs', component :AboutUsComponent},
   {path: 'Donatios', component :DonatiosComponent},
+  {path:"Verify" , component:VerifyComponent} ,  
   {path: 'Promo', component :PromoComponent}
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
