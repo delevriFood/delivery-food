@@ -64,12 +64,12 @@ alert(res)
   else 
   if(res=="2facter"){
     event.preventDefault()
-   
+
   this.router.navigate(["/Veifiy"])
   }
   else 
   { 
-   alert('Welcome')
+
 this.router.navigate([`/Home`])
 
   }

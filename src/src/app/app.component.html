@@ -1,37 +1,35 @@
-<div style="text-align: center">
-  <h1>Hello App</h1>
-  <a href="#" class="logo"><i class="fas fa-utensils"></i>food</a>
-  <header>
-    <a href="#" class="logo"><i class="fas fa-utensils"></i>food</a>
+<div style="text-align:center">
+<h1>
+  Hello App 
+</h1>
+<a href="#" class="logo"><i class="fas fa-utensils"></i>food</a>
+<header>
 
-    <div id="menu-bar" class="fas fa-bars"></div>
+  <a href="/Home" class="logo"><i class="fas fa-utensils"></i>food</a>
 
-    <nav>
-      <div class="navbar">
-        <a routerLink="/Home" routerLinkActive="router-link-active">Home</a>
-        <a routerLink="/Popular" routerLinkActive="router-link-active"
-          >Popular</a
-        >
-        <a routerLink="/Review" routerLinkActive="router-link-active">Review</a>
-        <a routerLink="/Gallery" routerLinkActive="router-link-active"
-          >Gallery</a
-        >
-        <a routerLink="/Specialty" routerLinkActive="router-link-active"
-          >Speciality</a
-        >
-        <a routerLink="/Login" routerLinkActive="router-link-active">Login</a>
-        <a id="ex3" routerLink="/Order" routerLinkActive="router-link-active">
-          <span class="p1 fa-stack fa-1x has-badge" data-count="0">
-            <i class="p2 fa fa-circle fa-stack-2x"></i>
-            <i
-              class="p3 fa fa-shopping-cart fa-stack-1x fa-inverse"
-              data-count="5"
-            ></i>
-          </span>
-        </a>
-      </div>
-
-    </nav>
-  </header>
-  <router-outlet></router-outlet>
+  <div >
+  <select name="cars" id="cars" id="menu-bar" class="fas fa-bars">
+    <option routerLink='/Order'>Order</option>
+    <option routerLink='/Popular'>Popular</option>
+    <option routerLink='/Review'>Review</option>
+    <option routerLink='/Specialty'>Specialty</option>
+  </select>
 </div>
+
+  <nav class="navbar">
+    
+      <a routerLink='/Home' routerLinkActive="router-link-active">Home</a>
+      <a routerLink='/Order' routerLinkActive="router-link-active">Order</a>
+      <a routerLink='/Popular' routerLinkActive="router-link-active">Popular</a>
+      <a routerLink='/Review' routerLinkActive="router-link-active">Review</a>
+      <a routerLink='/Gallery' routerLinkActive="router-link-active">Gallery</a>
+      <a routerLink='/Specialty' routerLinkActive="router-link-active">Speciality</a>
+      <a routerLink='/Promo' routerLinkActive="router-link-active">Promo</a>
+      <a routerLink='/Singnup' routerLinkActive="router-link-active">Register</a>
+      <a routerLink='/Login' routerLinkActive="router-link-active" >Login</a>
+      <a routerLink="/Face" routerLinkActive="router-link-active">Face</a>
+  </nav>
+  
+</header>
+<router-outlet></router-outlet>
+
