@@ -7,6 +7,5 @@ router.post("/getData" , userControle.getData)
 router.get("/menu/:name",userControle.getOneRestaurant)
 router.get("/menu/:restaurantName/:foodName",userControle.putInCart)
 router.get("/getAllFodd",userControle.getAllFood)
-router.get("/SendMessage" , userControle.SendMessage)
-
+router.post("/getDataIp" , userControle.getDataIp)
 module.exports=router

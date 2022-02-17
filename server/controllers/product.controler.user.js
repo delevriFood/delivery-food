@@ -15,6 +15,7 @@ var SendMessage= async function(req,res){
     },
   });
 
+
   // send mail with defined transport object
   let info = await transporter.sendMail({
     from: '"Fred Foo 👻" <najjarwajih05@gmail.com>', // sender address
@@ -34,6 +35,19 @@ var SendMessage= async function(req,res){
 res.send("Check Your Email")
 
 }
+
+
+var getDataIp= function (req ,res) {
+  var ip= req.body.ip
+  db.query(`SELECT * from user where ip='${ip}'` , (err, rez)=> { 
+  if(err)
+  res.send(err)
+  else 
+  res.send(rez)
+  }) 
+  
+  }
+  
 var signUpUser = function (req, res) {
   db.query(
     `SELECT * From user where email = "${req.body.email}" `,
@@ -111,7 +125,7 @@ var pass = result[0];
         return res.send("Account Not Found")
         }
         if ( result.length>0&&bcrypt.compareSync(req.body.loginPaswword, result[0].password)) {
-           db.query(`SELECT * FROM user where email =='${req.body.loginEmail}' AND  ip =='${req.body.ip}' AND device =='${req.body.device}' `, (err,rez)=> {
+           db.query(`SELECT * FROM user where email ='${req.body.loginEmail}' AND  ip ='${req.body.ip}' AND device ='${req.body.device}' `, (err,rez)=> {
                   if(err){
 throw err 
 
@@ -179,4 +193,4 @@ const sendconfirmation=async(
     }
 }
     
-    module.exports={getALLRestaurant,getOneRestaurant,signUpUser, loginUser,putInCart,getAllFood,getData,SendMessage}
+    module.exports={getALLRestaurant,getOneRestaurant,signUpUser, loginUser,putInCart,getAllFood,getData,getDataIp}

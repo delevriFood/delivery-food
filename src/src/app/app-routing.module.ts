@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-
-
-
-
 import { AppComponent } from './app.component';
 import { SingnupComponent } from './singnup/singnup.component';
 import { LoginComponent } from './login/login.component';
@@ -36,7 +31,6 @@ const routes: Routes = [
   {path:"Verify" , component:VerifyComponent} ,  
   {path: 'Promo', component :PromoComponent}
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

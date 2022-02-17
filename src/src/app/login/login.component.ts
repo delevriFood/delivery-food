@@ -50,6 +50,7 @@ var res = ""
 alert(res)   
 }).catch(err=> console.log(err))
   if(res=="Account Not Found" ||res =="incorrect"){
+    alert("False")
     this.router.navigate(['/Login']);
   }
   else 
