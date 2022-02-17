@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import axios from "axios" ;
 import { Router } from '@angular/router';
 import { DeviceDetectorService } from "ngx-device-detector";
-import * as $ from "jquery" ;
 @Component({
   selector: 'app-singnup',
   templateUrl: './singnup.component.html',
@@ -42,17 +41,13 @@ this.password= event.target.value
 }
 Getphone(event:any){ 
 this.phone=event.target.value
-
 }
-
 getFirstName(event:any){ 
 this.firstName = event.target.value
 }
 getLastName(event:any){
 this.lastName=event.target.value
-
 }
-
 async SendData(){ 
   alert("Hello")
 await axios.post("http://localhost:5000/user/signUpUser",{
@@ -62,8 +57,10 @@ email:  this.email ,
 password : this.password , 
 phone: this.phone , 
 ip : this.ip , 
-device : this.device }).then(data=> {
-alert(data)})
+device : this.device }).then(response=> {
+alert(response)
+console.log(response)
+})
 
 }
 

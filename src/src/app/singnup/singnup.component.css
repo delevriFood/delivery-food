@@ -65,7 +65,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #FF4A4A;
+  background-image: url("https://media.discordapp.net/attachments/933383404702011432/943626559263240202/fast-food.jpg?width=316&height=431");
+  background-repeat: no-repeat;
+  background-size:cover ;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -115,7 +117,7 @@
   padding: 15px;
   margin: 5px 0;
   font-size: 14px;
-  background-color: #f34646;
+  background-color: #EDB601;
   color: white;
   border-radius: 5px;
   text-align: center;
@@ -135,7 +137,7 @@
 }
 
 .green_btn {
-  background-color: #ff3838e8;
+  background-color: #EDB601;
   color: white;
   margin: 10px;
 }

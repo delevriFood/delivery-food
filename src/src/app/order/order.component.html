@@ -6,12 +6,12 @@
         </div>
         <form action="">
             <div class="inputBox">
-                <input type="text" placeholder="name" id ="name">
-                <input type="email" placeholder="email" id = "email">
+                <input type="text" placeholder="name" id ="name" [disabled]="isDisabled">
+                <input type="email" placeholder="email" id = "email" [disabled]="isDisabled">
             </div>
             <div class="inputBox">
-                <input type="number" placeholder="number">
-                <input type="text" placeholder="food name">
+                <input type="number" placeholder="number"  id="number" [disabled]="isDisabled">
+                <input type="text" placeholder="food name" id="food" [disabled]="isDisabled">
             </div>
             <textarea placeholder="address"  name="" cols="30" rows="10" id="adress" [disabled]="isDisabled"></textarea>
             <input type="submit" value="order now" class="btn">
