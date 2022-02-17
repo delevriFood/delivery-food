@@ -15,6 +15,7 @@ import { OrderComponent } from './order/order.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DonatiosComponent } from './donatios/donatios.component';
 import { PromoComponent } from './promo/promo.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PromoComponent } from './promo/promo.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule , 
+    AppRoutingModule,
+    NgbModule , 
 
       
   ],
