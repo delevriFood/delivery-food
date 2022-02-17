@@ -154,6 +154,20 @@ const sendconfirmation = async (email, firstName, lastName) => {
     throw err;
   }
 };
+var addFeedback=function(req, res){
+  var feedbacks = "INSERT INTO menu SET ?"
+  var params = {
+    person_name: req.body.person_name,
+    feedback:req.body.feedback
+  }
+  db.query(menufood, params,(res,err,)=>{
+    if(err){
+      console.log(err)
+    }else{
+      console.log(res)
+    }
+  })
+}
 
 module.exports = {
   getALLRestaurant,
@@ -163,4 +177,5 @@ module.exports = {
   putInCart,
   getAllFood,
   getData,
+  addFeedback
 };
