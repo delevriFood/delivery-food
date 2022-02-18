@@ -84,7 +84,7 @@ x.add(arr[i])
  constructor(private Service1: CommonService) {
   this.sub= this.Service1.getUpdate().subscribe
   (x => { //message contains the data sent from service
-  alert("Hello")
+ 
   console.log(x["text"])
   this.count = x["text"].counter;
   });

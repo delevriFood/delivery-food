@@ -63,12 +63,14 @@ var addMenu=function(req, res){
       food_name: req.body.food_name,
       price: req.body.price,
       image_food: req.body.image_food,
+      food_type:req.body.food_type,
+      descr: req.body.descr,
     }
-    db.query(menufood, params,(res,err,)=>{
+    db.query(menufood, params,(err,res)=>{
       if(err){
-        console.log(err)
+        console.log(err,null)
       }else{
-        console.log(res)
+        console.log(null,res)
       }
     })
 }
@@ -79,5 +81,7 @@ var getMenuOneRestaurant=(req,res)=>{
          err?console.log(err):res.send(result)
      })
  }
+
+
 
 module.exports={getALL,signUp,login,addMenu,getMenuOneRestaurant}

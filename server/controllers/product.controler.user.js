@@ -96,6 +96,13 @@ console.log(rez)
 })
 
 }
+var deleteOneOrder = (req,res)=>{
+  let food_name=req.body.food_name
+ const deleteOne=`DELETE FROM Orders where food_name= '${food_name}'}'`
+  db.query(deleteOne,(err,data)=>{
+      err?console.log(err):res.send(data)
+  })
+}
 
   var getOrder=function(req, res){
  var id = req.body.id
@@ -278,5 +285,6 @@ var addFeedback=function(req, res){
     }
   })
 }
+
     
-    module.exports={getALLRestaurant,getOneRestaurant,signUpUser, loginUser,putInCart,getAllFood,getData,getDataIp,getOrder,postOrder,getDataOrder}
+    module.exports={deleteOneOrder,getALLRestaurant,getOneRestaurant,signUpUser, loginUser,putInCart,getAllFood,getData,getDataIp,getOrder,postOrder,getDataOrder}

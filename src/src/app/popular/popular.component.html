@@ -4,19 +4,13 @@
 
     <div class="box-container">
 
-        <div class="box" *ngFor="let food of bestFood" >
+        <div class="box" *ngFor="let food of Data" >
             <span class="price"> {{food.price}} dt </span>
             <img src="{{food.img}}" alt="">
             <h4>
                 <h3 >{{food.name}}</h3>
             </h4>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
+            <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> </div>
             <a class="btn" (click)="AddOne($event)">order now</a>
         
 </div>

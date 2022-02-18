@@ -70,16 +70,14 @@ alert("Check Your Data ")
 // alert(GlobalVars.counter)
 this.sendMessage(event)
     }
-   ngOnInit(){
-   axios.get("http://localhost:5000/user/getAllFodd").then(data=>{
-   this.Data=data.data 
-   this.Data.sort(function(a:any,b:any){
-   return b.click-a.click 
-   })
-  
-  })
-   navigator.geolocation.getCurrentPosition(this.showPosition)
-   }
+    async ngOnInit(): Promise<void> {
+      await axios.get("http://localhost:5000/admin/getMenuOneRestaurant",).then((response) => {
+        this.foods = response.data
+        console.log(this.foods)
+    })
+    }
+
    
+  
 
 }
