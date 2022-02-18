@@ -1,4 +1,4 @@
-<section class="order" id="order">
+<section class="order" id="order" (click)="load()">
   <h1 class="heading"><span>order</span> now</h1>
   <div class="row">
     <div class="image">
@@ -27,34 +27,14 @@
         <table id="makla">
           <tbody>
             <tr>
-              <td placeholder="food name">name :</td>
-              <td>email:</td>
+              <td placeholder="food name" id = "name" class="name">name : {{Arr[0].firstName+" "+Arr[0].lastName }}</td>
+              <td id ="email" class="name">email: {{Arr[0].email}}</td>
             </tr>
-            <tr>
-              <td>Qt:1</td>
-              <td placeholder="food name">makloub :</td>
-              <td>price:</td>
-              <td>
-                <img
-                  id="delete"
-                  src="https://www.shareicon.net/data/256x256/2016/02/29/314239_delete_256x256.png"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Qt:1</td>
-              <td placeholder="food name">makloub :</td>
-              <td>price:</td>
-              <td>
-                <img
-                  id="delete"
-                  src="https://www.shareicon.net/data/256x256/2016/02/29/314239_delete_256x256.png"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Qt:1</td>
-              <td placeholder="food name">makloub :</td>
+            
+            
+            <tr *ngFor="let food of res">
+              <td>Qt:{{food.qt}}</td>
+              <td placeholder="food name">{{food.name}}</td>
               <td>price:</td>
               <td>
                 <img
@@ -64,7 +44,7 @@
               </td>
             </tr>
             <tr type="number" placeholder="number" id="number">
-              <td>number :</td>
+              <td class="phone">Phone : {{Arr[0].phoneNumber}}</td>
             </tr>
           </tbody>
         </table>
