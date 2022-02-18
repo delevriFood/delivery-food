@@ -3,15 +3,15 @@
       <h1>TWO-FACTOR AUTHENTICATION</h1>
       <div class="form__group form__pincode">
         <label>Enter 6-digit code from your authenticator application</label>
-        <input type="tel" name="pincode-1" maxlength="1" pattern="[\d]*" tabindex="1" placeholder="·" autocomplete="off">
-        <input type="tel" name="pincode-2" maxlength="1" pattern="[\d]*" tabindex="2" placeholder="·" autocomplete="off">
-        <input type="tel" name="pincode-3" maxlength="1" pattern="[\d]*" tabindex="3" placeholder="·" autocomplete="off">
-        <input type="tel" name="pincode-4" maxlength="1" pattern="[\d]*" tabindex="4" placeholder="·" autocomplete="off">
-        <input type="tel" name="pincode-5" maxlength="1" pattern="[\d]*" tabindex="5" placeholder="·" autocomplete="off">
-        <input type="tel" name="pincode-6" maxlength="1" pattern="[\d]*" tabindex="6" placeholder="·" autocomplete="off">
+        <input type="text" name="pincode-1" maxlength="1" pattern="[\d]*" tabindex="1" placeholder="·" autocomplete="off"  id="first">
+        <input type="text" name="pincode-2" maxlength="1" pattern="[\d]*" tabindex="2" placeholder="·" autocomplete="off"  id="second">
+        <input type="text" name="pincode-3" maxlength="1" pattern="[\d]*" tabindex="3" placeholder="·" autocomplete="off"  id="third">
+        <input type="text" name="pincode-4" maxlength="1" pattern="[\d]*" tabindex="4" placeholder="·" autocomplete="off"  id="fourth">
+        <input type="text" name="pincode-5" maxlength="1" pattern="[\d]*" tabindex="5" placeholder="·" autocomplete="off"  id="five">
+        <input type="text" name="pincode-6" maxlength="1" pattern="[\d]*" tabindex="6" placeholder="·" autocomplete="off"  id="six">
       </div>
       <div class="form__buttons">
-        <a href="#" class="button button--primary" disabled>Continue</a>
+        <a href="#" class="button button--primary" (click)="SendData($event)">Continue</a>
       </div>
     </form>
   </div>

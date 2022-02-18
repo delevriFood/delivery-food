@@ -17,46 +17,44 @@ ip = 0
 Order: any[]=[];
 private sub: Subscription; 
 count : any
+arr : any
 id =0
 food =""
 Arr =[{
 firstName:"" , 
 lastName:"" , 
-email:""
- 
+email:"" ,
+phoneNumber: ""
 }]
+ orderlist = new Map()
+res : any[] = []
 showPosition(position:any) {
   alert(position.coords.latitude +
  " "+ position.coords.longitude);
  }
  async getIp(){
-  await axios.get(" https://ipinfo.io?token=b6ee4628b70b64").then(data=> this.ip = data.data.ip)
+  await axios.get(" https://ipinfo.io?token=b6ee4628b70b64").then(data=> {
+  console.log(data.data.ip)  
+  
+  this.ip = data.data.ip})
 }
-async getLocation(event:any)
+async load()
 {
-event.preventDefault()  
+ await this.getIp()
+  alert(this.ip)
+
+ alert("Hi Orderd") 
 await axios.post("http://localhost:5000/user/getDataIp",{
-ip : "41.225.24.89"
+ip : this.ip
 }).then(data=> {
 this.Arr= data.data
 console.log(this.Arr[0].firstName)
 })
-var Adress = ( <HTMLInputElement>document.getElementById("adress") ) 
-if(Adress!=null)
-Adress.placeholder="We Fot You The Current Location"
-var Email = (<HTMLInputElement>document.getElementById("email")) 
-var Name = (<HTMLInputElement>document.getElementById("name")) 
+alert(this.Arr[0].firstName)
 navigator.geolocation.getCurrentPosition(this.showPosition)
 this.isDisabled=true ; 
-var Name = (<HTMLInputElement>document.getElementById("name"))
-var Email = (<HTMLInputElement>document.getElementById("email"))
-if(Name!=null){ 
-Name.placeholder = this.Arr[0]['firstName']+ +this.Arr[0].lastName 
-}
-if(Email!=null){
-Email.placeholder=this.Arr[0].email
-}
-  await axios.post("http://localhost:5000/user/getDataIp", {ip:"41.225.24.89"}).then((data:any )=>{
+console.log(this.Arr[0])
+  await axios.post("http://localhost:5000/user/getDataIp", {ip:this.ip}).then((data:any )=>{
   console.log(data)
   this.id = data.data[0].id
  // Change it later
@@ -67,19 +65,33 @@ Email.placeholder=this.Arr[0].email
  var Food = (<HTMLInputElement>document.getElementById("food"))
  if(Food!=null)
  Food.placeholder=this.food
- var x = new Set()
- var arr = this.food.split("/")
- for (let i = 0 ; i< arr.length; i ++){
-if(arr[i]!=="undefined" && arr[i].length>1) 
-x.add(arr[i])  
- }
- console.log(x)
- var Number =  (<HTMLInputElement>document.getElementById("number"))
- if(Number!=null)
- Number.placeholder=x.size.toString()
- })
+  this.arr = this.food.split("/")
+var x= 0
+  for (let i = 0 ; i< this.arr.length; i ++){
+if(this.arr[i]!=="undefined" && this.arr[i].length>1) {
+if(this.orderlist.has(this.arr[i])==true){
+    x = this.orderlist.get(this.arr[i])  
+  this.orderlist.set(this.arr[i] , x+1 )  
 }
- ngOninit(){
+else 
+this.orderlist.set(this.arr[i] , 1 )  
+
+
+}
+ }
+ var ex ={
+ name : "" , 
+ qt : ""  
+
+ }
+ 
+ for (let [key , value ] of this.orderlist){
+  ex.name = key 
+  ex.qt= value 
+  this.res.push(ex)
+ }
+ console.log(ex)
+ })
 }
  constructor(private Service1: CommonService) {
   this.sub= this.Service1.getUpdate().subscribe
