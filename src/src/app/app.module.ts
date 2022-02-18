@@ -16,7 +16,6 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { DonatiosComponent } from './donatios/donatios.component';
 import { VerifyComponent } from './verify/verify.component';
 import { PromoComponent } from './promo/promo.component';
-
 @NgModule({
   declarations: [
     AppComponent,

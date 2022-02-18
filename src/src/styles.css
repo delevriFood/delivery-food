@@ -4,6 +4,9 @@
 :root{
   --red:#ff3838;
 }
+a{
+  text-decoration: none ;
+}
 
 *{
   font-family: 'Nunito', sans-serif;
@@ -532,7 +535,7 @@ header .navbar a:hover{
 @media(max-width:768px){
 
   #menu-bar{
-    display: initial;
+    display: flex;
   }
 
   header .navbar{

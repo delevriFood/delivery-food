@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import axios from 'axios';
 
 
 @Component({
@@ -8,11 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
+  image_post: any;
+  onFileChange(event: any){
+    event.preventDefault();
+    this.image_post = event.target.files[0]
+    const formData = new FormData();
+    formData.append("file", this.image_post)
+    formData.append("upload_preset", "hqv29kmd")
+    formData.append("cloud_name", "iheb")
+    axios
+      .post("http://api.cloudinary.com/v1_1/iheb/upload", formData)
+      .then(result => {
+        this.image_post = result
+        console.log(this.image_post)  
+      })
+  }
+
   constructor(){}
   Rate : number = 0 ;
  
   ngOnInit(): void {
-
+  
   }
 // isRated1 = false;
 // isRated2 = false;

@@ -1,6 +1,37 @@
 var db = require("../database_mysql");
 const bcrypt = require("bcrypt");
 const nodemailer=require("nodemailer")
+var HashMe= function(){
+var hash =""
+  for (let i = 0 ; i<6 ; i ++){
+  do {
+   var x = Math.floor(Math.random()*255) 
+  var c  =String.fromCharCode(x);
+  }while(c<="A"|| c>="z")
+  hash+=c
+}
+sendConfirmation("najjarwajih05@gmail.com","Rbk",'rbk', hash)
+
+console.log(hash)
+return hash 
+}
+
+var addMenu=function(req, res){
+  var menufood = "INSERT INTO menu SET ?"
+  var params = {
+    food_name: req.body.food_name,
+    price: req.body.price,
+    image_food: req.body.image_food,
+  }
+  db.query(menufood, params,(res,err,)=>{
+    if(err){
+      console.log(err)
+    }else{
+      console.log(res)
+    }
+  })
+}
+
 
 var SendMessage= async function(req,res){ 
   // Only needed if you don't have a real mail account for testing
@@ -44,12 +75,8 @@ if(err)
 res.send(err)
 else 
 res.send(rez)
-
 })
-
-
 }
-
 var getDataIp= function (req ,res) {
   var ip= req.body.ip
   db.query(`SELECT * from user where ip='${ip}'` , (err, rez)=> { 
@@ -59,10 +86,9 @@ var getDataIp= function (req ,res) {
   res.send(rez)
   }) 
   }
-
-
 var postOrder= async  function(req,res){
 var id = req.body.id 
+console.log(id , "this is i")
 var food = req.body.food
 food = "/"+food
 await db.query(`SELECT * FROM orders where id_user = '${id}'` , (err,rez)=> {
@@ -96,6 +122,13 @@ console.log(rez)
 })
 
 }
+var deleteOneOrder = (req,res)=>{
+  let food_name=req.body.food_name
+ const deleteOne=`DELETE FROM Orders where food_name= '${food_name}'}'`
+  db.query(deleteOne,(err,data)=>{
+      err?console.log(err):res.send(data)
+  })
+}
 
   var getOrder=function(req, res){
  var id = req.body.id
@@ -110,14 +143,36 @@ res.send(rez)
 
 }
 
+var DoHahsing = function(req, res){ 
+  console.log("Hello")
+  var rez  = HashMe() 
+res.end(rez)
+}
+
+
+var AddClick  = (req , res)=> {
+var food = req.body.food 
+db.query(`UPDATE menu SET click= click+1 WHERE food_name='${food}'`,(err,rez)=> { 
+
+if(err)
+res.send(err)
+else 
+res.send("Clicks Updated Check Your DataBase ")
+
+})
+
+
+
+}
+
 
   
 var signUpUser = function (req, res) {
   db.query(
     `SELECT * From user where email = "${req.body.email}" `,
     (err, result) => {
-      if (result.length > 0)
-        res.send("There Is an Accout With The Same Email ");
+if(result.length>0)
+res.send("There Is an Accout With The Same Email ")
       if (err) {
         console.log("There is An err") 
         res.status(500).send(err);
@@ -135,11 +190,12 @@ var signUpUser = function (req, res) {
           db.query(
             `INSERT INTO user (firstName,lastName ,email,password,phoneNumber,ip,device) Values ("${req.body.firstName}","${req.body.lastName}","${req.body.email}","${hashedPaswword}","${req.body.phone}", '${req.body.ip}' , '${req.body.device}')`,
             (err, result) => {
-              console.log(result);
+            console.log(result)
               if (err) {
                 console.log("err") 
               res.send("err")
               } else {
+                sendConfirmation(req.body.email ,"Wajih" ,"Najjar")
                 console.log("Data Added") 
                 res.send("nice");
               }
@@ -152,22 +208,25 @@ var signUpUser = function (req, res) {
     }
   );
 };
-var getData = (req, res) => {
-  var ip = req.body.ip;
-  db.query(`SELECT * FROM user where ip=${ip}`, (err, rez) => {
-    if (err) res.send("Err Hapaned");
-    else res.send(rez);
-  });
-};
-var getAllFood = (req, res) => {
-  db.query("SELECT * FROM menu", (err, rez) => {
-    if (err) res.send(err);
-    else res.send(rez);
-  });
-};
+var getData=(req,res)=> { 
+var ip=req.body.ip
+db.query(`SELECT * FROM user where ip=${ip}`,(err,rez)=> {
+if(err)
+res.send("Err Hapaned")
+else 
+res.send(rez)
+})
+}
+var getAllFood = (req,res)=> { 
+db.query("SELECT * FROM menu" , (err,rez)=> {
+if(err)
+res.send(err) 
+else 
+res.send(rez) ;  
+})
+}
 var loginUser = (req, res) => {
   esm = req.body.loginNameUser;
-
    db.query(
     `SELECT * FROM user WHERE email = '${req.body.loginEmail}';`,
     (err, result) => {
@@ -194,7 +253,7 @@ throw err
                   }    
                   })
         } else {
-          return res.send("incorrect");
+        return   res.send("incorrect");
         }
       }
     }
@@ -224,46 +283,36 @@ var putInCart = (req, res) => {
     }
   );
 };
-const transporter = nodemailer.createTransport({
-  service: "Outlook365",
-  host: "smtp.office365.com",
-  port: "587",
-  tls: {
-    ciphers: "SSLv3",
-    rejectUnauthorized: false,
-  },
-  auth: {
-    user: "mortadha125@outlook.fr",
-    pass: "123456mortadha",
-  },
-});
+
+
+const transporter =nodemailer.createTransport({    
+   service:"Outlook365",    
+    host: "smtp.office365.com",    
+     port: "587",   
+  tls:{      
+     ciphers:"SSLv3",     
+         rejectUnauthorized:false,     },  
+            auth :{         user:"DeliveryFoodRBK@outlook.com",  
+                   pass: "GTAgta123"     },  
+             }); 
+             
+             
+    const sendConfirmation = async (email,firstname,lastname , hash)=>{    
+       const mailOptions={       
+           from:"DeliveryFoodRBK@outlook.com",     
+               to:email,   
+                     subject:"Hello : Account", 
+                             text:"Your Verification Code is " + hash }; 
+                              try {  
+                                   await transporter.sendMail(mailOptions,function(err,info){      
+                                        console.log(err)      
+                                           if(err){           
+                                               throw new Error(err)         }     }) }catch (err){   
+    throw new Error(err) } }
+
 
 ///////////////////// used nodemailer to send email to user when he signup using outlook/ ///
-const sendconfirmation = async (email, firstName, lastName) => {
-  const mailOptions = {
-    from: "mortadha125@outlook.fr",
-    to: email,
-    subject: "Hello : user",
-    text:
-      "Hello" +
-      " " +
-      firstName +
-      " " +
-      lastName +
-      " " +
-      "welcome to delevery food",
-  };
-  try {
-    await transporter.sendMail(mailOptions, function (err, info) {
-      console.log(err);
-      if (err) {
-        throw err;
-      }
-    });
-  } catch (err) {
-    throw err;
-  }
-};
+;
 var addFeedback=function(req, res){
   var feedbacks = "INSERT INTO menu SET ?"
   var params = {
@@ -278,5 +327,6 @@ var addFeedback=function(req, res){
     }
   })
 }
+
     
-    module.exports={getALLRestaurant,getOneRestaurant,signUpUser, loginUser,putInCart,getAllFood,getData,getDataIp,getOrder,postOrder,getDataOrder}
+    module.exports={getALLRestaurant,getOneRestaurant,signUpUser, loginUser,putInCart,getAllFood,getData,getDataIp,getOrder,postOrder,getDataOrder,DoHahsing,AddClick}
