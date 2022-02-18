@@ -5,19 +5,28 @@
       <form class="form_container">
         <h1>Login to Your Account</h1>
 
-        <input type="email" placeholder="Email" name="email" class="input" (change)="GetDataEmail($event)" />
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          class="input"
+          (change)="GetDataEmail($event)"
+        />
         <input
           type="password"
           placeholder="Password"
           name="password"
           class="input"
-        (change)="GetDataPassword($event)" />
-        <div class="error_msg">error</div>
-        <a routerLink="/Singnup" routerLinkActive="router-link-active"
-          >Register</a
-        >
+          (change)="GetDataPassword($event)"
+        />
 
-        <button type="submit" className="green_btn" (click)="GetDataFromDataBase($event)">Sing In</button>
+        <button
+          type="button"
+          class="green_btn"
+          (click)="GetDataFromDataBase($event)"
+        >
+          Log in
+        </button>
       </form>
     </div>
     <div class="right">
@@ -25,7 +34,8 @@
 
       <button type="button" class="white_btn">
         <a routerLink="/Singnup" routerLinkActive="router-link-active">
-          Sing In</a>
+          Sing Up</a
+        >
       </button>
     </div>
   </div>
