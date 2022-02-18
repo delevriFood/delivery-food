@@ -14,3 +14,4 @@ router.post("/getDataOrder" , userControle.getDataOrder)
 router.post("/DoHahsing" , userControle.DoHahsing)
 router.post("/AddClick" , userControle.AddClick)
 module.exports=router
+

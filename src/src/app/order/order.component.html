@@ -1,21 +1,70 @@
-<section class="order" id="order">
-    <h1 class="heading"> <span>order</span> now </h1>
-    <div class="row">
-        <div class="image">
-            <img id="test" src="https://youngwomenshealth.org/wp-content/uploads/2014/02/fast-food.jpg" alt="">
-        </div>
-        <form action="">
-            <div class="inputBox">
-                <input type="text" placeholder="name" id ="name" [disabled]="isDisabled">
-                <input type="email" placeholder="email" id = "email" [disabled]="isDisabled">
-            </div>
-            <div class="inputBox">
-                <input type="number" placeholder="number"  id="number" [disabled]="isDisabled">
-                <input type="text" placeholder="food name" id="food" [disabled]="isDisabled">
-            </div>
-            <textarea placeholder="address"  name="" cols="30" rows="10" id="adress" [disabled]="isDisabled"></textarea>
-            <input type="submit" value="order now" class="btn">
-            <input type="submit" value="Fill The inputs" class="btn"  (click)="getLocation($event)">
-        </form>
+<section class="order" id="order" (click)="load()">
+  <h1 class="heading"><span>order</span> now</h1>
+  <div class="row">
+    <div class="image">
+      <img
+        id="test"
+        src="https://youngwomenshealth.org/wp-content/uploads/2014/02/fast-food.jpg"
+        alt=""
+      />
     </div>
+    <form action="">
+      <div class="inputBox">
+        <!-- <input
+          type="text"
+          placeholder="name"
+          id="name"
+          [disabled]="isDisabled"
+        />
+        <input
+          type="email"
+          placeholder="email"
+          id="email"
+          [disabled]="isDisabled"
+        /> -->
+      </div>
+      <div class="inputBox">
+        <table id="makla">
+          <tbody>
+            <tr>
+              <td placeholder="food name" id = "name" class="name">name : {{Arr[0].firstName+" "+Arr[0].lastName }}</td>
+              <td id ="email" class="name">email: {{Arr[0].email}}</td>
+            </tr>
+            
+            
+            <tr *ngFor="let food of res">
+              <td>Qt:{{food.qt}}</td>
+              <td placeholder="food name">{{food.name}}</td>
+              <td>price:</td>
+              <td>
+                <img
+                  id="delete"
+                  src="https://www.shareicon.net/data/256x256/2016/02/29/314239_delete_256x256.png"
+                />
+              </td>
+            </tr>
+            <tr type="number" placeholder="number" id="number">
+              <td class="phone">Phone : {{Arr[0].phoneNumber}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h1 class="heading"><span>add</span>comment ?</h1>
+      <textarea
+        placeholder="anything to add ?"
+        name=""
+        cols="30"
+        rows="10"
+        id="adress"
+        [disabled]="isDisabled"
+      ></textarea>
+      <input type="submit" value="order now" class="btn" id="orderNowbT" />
+      <!-- <input
+        type="submit"
+        value="Fill The inputs"
+        class="btn"
+        (click)="getLocation($event)"
+      /> -->
+    </form>
+  </div>
 </section>

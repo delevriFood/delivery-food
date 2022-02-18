@@ -75,12 +75,8 @@ if(err)
 res.send(err)
 else 
 res.send(rez)
-
 })
-
-
 }
-
 var getDataIp= function (req ,res) {
   var ip= req.body.ip
   db.query(`SELECT * from user where ip='${ip}'` , (err, rez)=> { 
@@ -90,10 +86,9 @@ var getDataIp= function (req ,res) {
   res.send(rez)
   }) 
   }
-
-
 var postOrder= async  function(req,res){
 var id = req.body.id 
+console.log(id , "this is i")
 var food = req.body.food
 food = "/"+food
 await db.query(`SELECT * FROM orders where id_user = '${id}'` , (err,rez)=> {
@@ -126,6 +121,13 @@ console.log(rez)
 }
 })
 
+}
+var deleteOneOrder = (req,res)=>{
+  let food_name=req.body.food_name
+ const deleteOne=`DELETE FROM Orders where food_name= '${food_name}'}'`
+  db.query(deleteOne,(err,data)=>{
+      err?console.log(err):res.send(data)
+  })
 }
 
   var getOrder=function(req, res){
@@ -169,8 +171,8 @@ var signUpUser = function (req, res) {
   db.query(
     `SELECT * From user where email = "${req.body.email}" `,
     (err, result) => {
-      if (result.length > 0)
-        res.send("There Is an Accout With The Same Email ");
+if(result.length>0)
+res.send("There Is an Accout With The Same Email ")
       if (err) {
         console.log("There is An err") 
         res.status(500).send(err);
@@ -188,7 +190,7 @@ var signUpUser = function (req, res) {
           db.query(
             `INSERT INTO user (firstName,lastName ,email,password,phoneNumber,ip,device) Values ("${req.body.firstName}","${req.body.lastName}","${req.body.email}","${hashedPaswword}","${req.body.phone}", '${req.body.ip}' , '${req.body.device}')`,
             (err, result) => {
-              console.log(result);
+            console.log(result)
               if (err) {
                 console.log("err") 
               res.send("err")
@@ -206,22 +208,25 @@ var signUpUser = function (req, res) {
     }
   );
 };
-var getData = (req, res) => {
-  var ip = req.body.ip;
-  db.query(`SELECT * FROM user where ip=${ip}`, (err, rez) => {
-    if (err) res.send("Err Hapaned");
-    else res.send(rez);
-  });
-};
-var getAllFood = (req, res) => {
-  db.query("SELECT * FROM menu", (err, rez) => {
-    if (err) res.send(err);
-    else res.send(rez);
-  });
-};
+var getData=(req,res)=> { 
+var ip=req.body.ip
+db.query(`SELECT * FROM user where ip=${ip}`,(err,rez)=> {
+if(err)
+res.send("Err Hapaned")
+else 
+res.send(rez)
+})
+}
+var getAllFood = (req,res)=> { 
+db.query("SELECT * FROM menu" , (err,rez)=> {
+if(err)
+res.send(err) 
+else 
+res.send(rez) ;  
+})
+}
 var loginUser = (req, res) => {
   esm = req.body.loginNameUser;
-
    db.query(
     `SELECT * FROM user WHERE email = '${req.body.loginEmail}';`,
     (err, result) => {
@@ -248,7 +253,7 @@ throw err
                   }    
                   })
         } else {
-          return res.send("incorrect");
+        return   res.send("incorrect");
         }
       }
     }
@@ -322,5 +327,6 @@ var addFeedback=function(req, res){
     }
   })
 }
+
     
     module.exports={getALLRestaurant,getOneRestaurant,signUpUser, loginUser,putInCart,getAllFood,getData,getDataIp,getOrder,postOrder,getDataOrder,DoHahsing,AddClick}

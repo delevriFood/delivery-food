@@ -33,7 +33,8 @@ CREATE TABLE menu (
   price int,
   image_food varchar(255) NOT NULL,
   Descr varchar(255),
-  click int default 0 , 
+  food_type varchar(255),
+  click int default 0, 
   PRIMARY KEY (id_menu)
 );
 
@@ -44,4 +45,9 @@ orderstring varchar(200),
 PRIMARY KEY(id)
 );
 
-  CREATE TABLE reviews (id_person int NOT NULL AUTO_INCREMENT,id_feedback int Not NULL ,person_name varchar(50),feedback varchar(255),PRIMARY KEY (id_person));
+  CREATE TABLE reviews (
+    id_person int NOT NULL AUTO_INCREMENT,
+    id_feedback int Not NULL ,
+    person_name varchar(50),
+    feedback varchar(255),
+    PRIMARY KEY (id_person));

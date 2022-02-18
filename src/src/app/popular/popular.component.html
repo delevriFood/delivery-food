@@ -5,20 +5,15 @@
     <div class="box-container">
 
         <div class="box" *ngFor="let food of foods">
-            <span class="price">  dt </span>
-            <img src="https://media.discordapp.net/attachments/942878359099150426/943136474281439303/s-img-1.jpg" alt="">
+            <span class="price"> {{food.price}} dt </span>
+            <img src="{{food.image_food}}" alt="">
             <h4>
                 <h3 >{{food.food_name}}</h3>
             </h4>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-            </div>
-            <a href="#" class="btn">order now</a>
-
+            <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> </div>
+            <a class="btn" (click)="AddOne($event)" >order now</a>
+            
+        
 </div>
     </div>
 

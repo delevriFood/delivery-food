@@ -11,7 +11,8 @@
             </div>
             <form action="">
                 <div class="inputBox">
-                    <input type="text" placeholder=" your name" id ="name">    <input type="file">
+                    <input type="text" placeholder=" your name" id ="name">  
+                      <input type="file"  (ngModel)="onFileChange($event)">
                 </div>
                 <div class="inputBox">
                 </div>
