@@ -16,6 +16,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { DonatiosComponent } from './donatios/donatios.component';
 import { VerifyComponent } from './verify/verify.component';
 import { PromoComponent } from './promo/promo.component';
+import { FaceRegoComponent } from './face-rego/face-rego.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { PromoComponent } from './promo/promo.component';
     AboutUsComponent,
     DonatiosComponent,
     VerifyComponent,
-    PromoComponent
+    PromoComponent,
+    FaceRegoComponent
   ],
   imports: [
     BrowserModule,
