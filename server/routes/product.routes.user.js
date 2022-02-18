@@ -7,4 +7,10 @@ router.post("/getData" , userControle.getData)
 router.get("/menu/:name",userControle.getOneRestaurant)
 router.get("/menu/:restaurantName/:foodName",userControle.putInCart)
 router.get("/getAllFodd",userControle.getAllFood)
+router.post("/getDataIp" , userControle.getDataIp)
+router.post("/getOrder", userControle.getOrder)
+router.post("/postOrder", userControle.postOrder) 
+router.post("/getDataOrder" , userControle.getDataOrder)
+router.delete('/delete',userControle.deleteOneOrder)
 module.exports=router
+

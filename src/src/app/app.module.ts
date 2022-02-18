@@ -14,9 +14,8 @@ import { ReviewComponent } from './review/review.component';
 import { OrderComponent } from './order/order.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DonatiosComponent } from './donatios/donatios.component';
+import { VerifyComponent } from './verify/verify.component';
 import { PromoComponent } from './promo/promo.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,12 +30,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     OrderComponent,
     AboutUsComponent,
     DonatiosComponent,
+    VerifyComponent,
     PromoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    NgbModule , 
+    AppRoutingModule , 
 
       
   ],

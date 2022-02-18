@@ -2,9 +2,8 @@
   <h1>Hello App</h1>
   <a href="#" class="logo"><i class="fas fa-utensils"></i>food</a>
   <header>
-    <a href="#" class="logo"><i class="fas fa-utensils"></i>test</a>
+    <a href="#" class="logo"><i class="fas fa-utensils"></i>yummy</a>
 
-    <div id="menu-bar" class="fas fa-bars"></div>
 
     <nav>
       <div class="navbar">
@@ -21,7 +20,7 @@
         >
         <a routerLink="/Login" routerLinkActive="router-link-active">Login</a>
         <a id="ex3" routerLink="/Order" routerLinkActive="router-link-active">
-          <span class="p1 fa-stack fa-1x has-badge" data-count="0">
+          <span class="p1 fa-stack fa-1x has-badge" [attr.data-count]="count">
             <i class="p2 fa fa-circle fa-stack-2x"></i>
             <i
               class="p3 fa fa-shopping-cart fa-stack-1x fa-inverse"
@@ -35,3 +34,4 @@
   </header>
   <router-outlet></router-outlet>
 </div>
+
