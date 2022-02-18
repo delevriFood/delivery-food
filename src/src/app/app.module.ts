@@ -14,6 +14,7 @@ import { ReviewComponent } from './review/review.component';
 import { OrderComponent } from './order/order.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DonatiosComponent } from './donatios/donatios.component';
+import { VerifyComponent } from './verify/verify.component';
 import { PromoComponent } from './promo/promo.component';
 @NgModule({
   declarations: [
@@ -29,8 +30,8 @@ import { PromoComponent } from './promo/promo.component';
     OrderComponent,
     AboutUsComponent,
     DonatiosComponent,
-    PromoComponent,
-
+    VerifyComponent,
+    PromoComponent
   ],
   imports: [
     BrowserModule,
