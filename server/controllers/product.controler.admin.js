@@ -64,7 +64,8 @@ var addMenu=function(req, res){
       price: req.body.price,
       image_food: req.body.image_food,
       food_type:req.body.food_type,
-      descr: req.body.descr,
+      descr: req.body.descr ,
+      click : req.body.click
     }
     db.query(menufood, params,(err,res)=>{
       if(err){
