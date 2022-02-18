@@ -1,0 +1,38 @@
+.t{
+	margin-top:150px;
+}
+#test{
+	border-radius: 100%;
+}
+#card2{
+	height: 500px;
+	width: 800px;
+}
+#card1{
+	height: 500px;
+	width: 800px;
+}
+
+#te {
+  margin-top: 5%;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+#tiir {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+#tt {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+}
+
+/* .review {
+  margin-left: 10px;
+  display: grid;
+  grid-auto-rows: auto ;
+  grid-auto-columns: auto auto ;
+
+} */
