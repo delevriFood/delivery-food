@@ -33,7 +33,8 @@ CREATE TABLE menu (
   price int,
   image_food varchar(255) NOT NULL,
   Descr varchar(255),
-  click int , 
+  food_type varchar(255),
+  click int default 0, 
   PRIMARY KEY (id_menu)
 );
 

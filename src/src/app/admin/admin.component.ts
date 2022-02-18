@@ -9,12 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class AdminComponent implements OnInit {
   
   constructor() { }
-  view = true ;
+  view = "0" ;
   ngOnInit(): void {
   
   }
-  changeView(){
-    this.view=!this.view
-  }
+ 
 }
 
