@@ -69,7 +69,6 @@ export class LoginComponent {
       this.router.navigate(['/Login']);
     } else if (res == '2facter') {
       event.preventDefault();
-
       this.router.navigate(['/Veifiy']);
     } else {
       alert('True');
