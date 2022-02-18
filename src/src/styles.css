@@ -4,6 +4,9 @@
 :root{
   --red:#ff3838;
 }
+a{
+  text-decoration: none ;
+}
 
 *{
   font-family: 'Nunito', sans-serif;

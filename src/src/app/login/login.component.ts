@@ -53,10 +53,10 @@ alert(res)
     alert("False")
     this.router.navigate(['/Login']);
   }
+
   else 
   if(res=="2facter"){
     event.preventDefault()
-   
   this.router.navigate(["/Veifiy"])
   }
   else 

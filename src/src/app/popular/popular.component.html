@@ -4,11 +4,11 @@
 
     <div class="box-container">
 
-        <div class="box" *ngFor="let food of bestFood" >
-            <span class="price"> {{food.price}} dt </span>
-            <img src="{{food.img}}" alt="">
+        <div class="box" *ngFor="let food of foods">
+            <span class="price">  dt </span>
+            <img src="https://media.discordapp.net/attachments/942878359099150426/943136474281439303/s-img-1.jpg" alt="">
             <h4>
-                <h3 >{{food.name}}</h3>
+                <h3 >{{food.food_name}}</h3>
             </h4>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -17,8 +17,8 @@
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
             </div>
-            <a class="btn" (click)="AddOne($event)">order now</a>
-        
+            <a href="#" class="btn">order now</a>
+
 </div>
     </div>
 
