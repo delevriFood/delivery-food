@@ -116,8 +116,8 @@ var signUpUser = function (req, res) {
   db.query(
     `SELECT * From user where email = "${req.body.email}" `,
     (err, result) => {
-      if (result.length > 0)
-        res.send("There Is an Accout With The Same Email ");
+if(result.length>0)
+res.send("There Is an Accout With The Same Email ")
       if (err) {
         console.log("There is An err") 
         res.status(500).send(err);
@@ -135,7 +135,7 @@ var signUpUser = function (req, res) {
           db.query(
             `INSERT INTO user (firstName,lastName ,email,password,phoneNumber,ip,device) Values ("${req.body.firstName}","${req.body.lastName}","${req.body.email}","${hashedPaswword}","${req.body.phone}", '${req.body.ip}' , '${req.body.device}')`,
             (err, result) => {
-              console.log(result);
+            console.log(result)
               if (err) {
                 console.log("err") 
               res.send("err")
@@ -152,22 +152,25 @@ var signUpUser = function (req, res) {
     }
   );
 };
-var getData = (req, res) => {
-  var ip = req.body.ip;
-  db.query(`SELECT * FROM user where ip=${ip}`, (err, rez) => {
-    if (err) res.send("Err Hapaned");
-    else res.send(rez);
-  });
-};
-var getAllFood = (req, res) => {
-  db.query("SELECT * FROM menu", (err, rez) => {
-    if (err) res.send(err);
-    else res.send(rez);
-  });
-};
+var getData=(req,res)=> { 
+var ip=req.body.ip
+db.query(`SELECT * FROM user where ip=${ip}`,(err,rez)=> {
+if(err)
+res.send("Err Hapaned")
+else 
+res.send(rez)
+})
+}
+var getAllFood = (req,res)=> { 
+db.query("SELECT * FROM menu" , (err,rez)=> {
+if(err)
+res.send(err) 
+else 
+res.send(rez) ;  
+})
+}
 var loginUser = (req, res) => {
   esm = req.body.loginNameUser;
-
    db.query(
     `SELECT * FROM user WHERE email = '${req.body.loginEmail}';`,
     (err, result) => {
@@ -194,48 +197,39 @@ throw err
                   }    
                   })
         } else {
-          return res.send("incorrect");
+        return   res.send("incorrect");
         }
       }
     }
   );
 };
-var getALLRestaurant = function (req, res) {
-  db.query(
-    "SELECT name,picture,description FROM restaurant ",
-    (err, result) => {
-      err ? res.status(500).send(err) : res.status(200).send(result);
-    }
-  );
-};
-var getOneRestaurant = (req, res) => {
-  db.query(
-    `SELECT * FROM menu where restaurant_id = (SELECT restaurant_id from restaurant where name = "${req.params.name}" )`,
-    (err, result) => {
-      err ? res.status(500).send(err) : res.status(200).send(result);
-    }
-  );
-};
-var putInCart = (req, res) => {
-  db.query(
-    `SELECT food_name , price  FROM menu WHERE food_name = '${req.params.foodName}' AND restaurant_id = (SELECT restaurant_id FROM  restaurant WHERE name = '${req.params.restaurantName}') `,
-    (err, result) => {
-      err ? res.status(500).send(err) : res.send(result);
-    }
-  );
-};
-const transporter = nodemailer.createTransport({
-  service: "Outlook365",
-  host: "smtp.office365.com",
-  port: "587",
-  tls: {
-    ciphers: "SSLv3",
-    rejectUnauthorized: false,
-  },
-  auth: {
-    user: "mortadha125@outlook.fr",
-    pass: "123456mortadha",
-  },
+var getALLRestaurant=function(req,res){
+    db.query("SELECT name,picture,description FROM restaurant ",(err,result)=>{
+    err?res.status(500).send(err):res.status(200).send(result)
+    })
+}
+var getOneRestaurant = (req,res)=>{
+    db.query(`SELECT * FROM menu where restaurant_id = (SELECT restaurant_id from restaurant where name = "${req.params.name}" )`,(err,result)=>{
+        err?res.status(500).send(err):res.status(200).send(result)
+    })
+}
+var putInCart = (req,res)=>{ 
+  db.query(`SELECT food_name , price  FROM menu WHERE food_name = '${req.params.foodName}' AND restaurant_id = (SELECT restaurant_id FROM  restaurant WHERE name = '${req.params.restaurantName}') `,(err,result)=>{
+    err?res.status(500).send(err):res.send(result)
+  })
+}
+const transporter=nodemailer.createTransport({
+    service:"Outlook365",
+    host:"smtp.office365.com",
+    port:"587",
+    tls:{
+        ciphers:"SSLv3",
+        rejectUnauthorized:false,
+    },
+    auth:{
+        user:"mortadha125@outlook.fr",
+        pass:"123456mortadha"
+    },
 });
 
 ///////////////////// used nodemailer to send email to user when he signup using outlook/ ///

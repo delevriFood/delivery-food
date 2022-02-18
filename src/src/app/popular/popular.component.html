@@ -4,11 +4,11 @@
 
     <div class="box-container">
 
-        <div class="box" *ngFor="let food of bestFood" >
+        <div class="box" *ngFor="let food of foods">
             <span class="price"> {{food.price}} dt </span>
-            <img src="{{food.img}}" alt="">
+            <img src="{{food.image_food}}" alt="">
             <h4>
-                <h3 >{{food.name}}</h3>
+                <h3 >{{food.food_name}}</h3>
             </h4>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -17,7 +17,7 @@
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
             </div>
-            <a class="btn" (click)="AddOne($event)">order now</a>
+            <a href="#" class="btn">order now</a>
         
 </div>
     </div>

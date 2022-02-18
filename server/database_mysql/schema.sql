@@ -44,4 +44,9 @@ orderstring varchar(200),
 PRIMARY KEY(id)
 );
 
-  CREATE TABLE reviews (id_person int NOT NULL AUTO_INCREMENT,id_feedback int Not NULL ,person_name varchar(50),feedback varchar(255),PRIMARY KEY (id_person));
+  CREATE TABLE reviews (
+    id_person int NOT NULL AUTO_INCREMENT,
+    id_feedback int Not NULL ,
+    person_name varchar(50),
+    feedback varchar(255),
+    PRIMARY KEY (id_person));

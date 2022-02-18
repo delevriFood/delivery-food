@@ -25,6 +25,7 @@
     "bootstrap": "^5.1.3",
     "jquery": "^3.6.0",
     "marked": "^4.0.12",
+    "ng2-file-upload": "^1.4.0",
     "ngx-device-detector": "^3.0.0",
     "ngx-face-api-js": "^0.1.1",
     "rxjs": "^6.6.7",
