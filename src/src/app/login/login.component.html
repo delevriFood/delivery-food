@@ -5,7 +5,13 @@
       <form class="form_container">
         <h1>Login to Your Account</h1>
 
-        <input type="email" placeholder="Email" name="email" class="input" (change)="GetDataEmail($event)" />
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          class="input"
+          (change)="GetDataEmail($event)"
+        />
         <input
           type="password"
           placeholder="Password"
@@ -28,7 +34,8 @@
 
       <button type="button" class="white_btn">
         <a routerLink="/Singnup" routerLinkActive="router-link-active">
-          Sing In</a>
+          Sing Up</a
+        >
       </button>
     </div>
   </div>
